@@ -2,11 +2,6 @@ import mongoose from "mongoose";
 import bcrypt from 'bcryptjs'
 
 const userSchema = new mongoose.Schema({
-    userName:{
-        type: String,
-        required: true,
-        unique: true
-    },
     fullName:{
         type: String,
         required: true,
@@ -38,6 +33,13 @@ const userSchema = new mongoose.Schema({
     refreshToken: {
         type: String
     }
+    },
+    isVerified:{
+        type: Boolean,
+        default: false
+    }, 
+    otpCode: String, 
+    expiredOtp: Date
 }, {timestamps: true})
 
 //hash password in save time

@@ -4,6 +4,7 @@ import cors from 'cors'
 import User from './models/User.model.js'
 import TempUser from './models/TempUser.model.js'
 
+import authRouter from './routers/auth.route.js'
 
 
 const app = express()
@@ -22,6 +23,7 @@ app.use(urlencoded({extended: false}))
 app.use(express.json())
 
 //routes
+app.use('/api/auth', authRouter)
 
 
 app.get('/', (req, res)=>{
