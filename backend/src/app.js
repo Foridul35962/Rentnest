@@ -5,6 +5,7 @@ import User from './models/User.model.js'
 import TempUser from './models/TempUser.model.js'
 
 import authRouter from './routers/auth.route.js'
+import errorHandler from './utils/errorHandler.js'
 
 
 const app = express()
@@ -97,6 +98,8 @@ app.post("/verify-otp", async (req, res)=>{
    await TempUser.deleteOne({_id: user._id})
    return res.status(200).json({message: "OTP verified successfully."});
 })
-// app.use()
+
+//global error handler
+app.use(errorHandler)
 
 export default app
